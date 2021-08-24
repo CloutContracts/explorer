@@ -16,7 +16,7 @@ body {
 .custom-button {
     background-color: #5959D8 !important;
     border-color: #5959D8;
-    width: 100%;
+    width: 50%;
     border-radius: 0px !important;
     border-color: #5959D8 !important;
 }
@@ -103,4 +103,74 @@ hr{
 
 .hash{
     font-size: 10pt !important;
+}
+
+.dataTables_info,
+.dataTables_length,
+.dataTables_filter {
+    color: #636363;
+}
+
+footer{
+    padding-top : 3rem;
+    padding-bottom: 3rem;
+    text-align: center;
+    color: #737373;
+}
+
+.card{
+    background-color: #282945 !important;
+}
+
+.card-title{
+    color: #5959D8;
+}
+
+.table-dark{
+    --bs-table-bg : #1b1c31 !important;
+    --bs-table-striped-bg : #1b1c31 !important;
+    --bs-table-striped-color : #8989f1 !important;
+    --bs-table-active-bg : #5959d8 !important;
+    color : #fff !important;
+}
+
+
+footer p{
+    font-size: 11pt;
+}
+
+#test-token,
+#main-table,
+#peg-table,
+#bnb-table {
+    font-size: 10pt;
+}
+
+.w-40{
+    width: 40% !important;
+}
+
+.w-10{
+    width: 10% !important;
+}
+
+.w-15{
+    width: 15% !important;
+}
+
+.w-45{
+    width: 45% !important;
+}
+
+.w-8{
+    width: 8% !important;
+}
+
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr{
+    width: 5% !important;
 }
