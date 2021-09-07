@@ -152,7 +152,7 @@ function etcPegRollup(api_url, element_id) {
         });
 }
 
-function etcLockRollup(api_url, element_id) {
+function etcPegLock(api_url, element_id) {
     
     $.get(api_url,
         function (data) {
