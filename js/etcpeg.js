@@ -16,14 +16,13 @@ $('#etcpeg-rollup').click(function () {
         "https://blockscout.com/etc/mainnet/api?module=account&action=txlist&address=0x6f6ed4820E44128794D22eB0b8B5c035a8Eac4E6"
     etcPegRollup(api_url, element_id);
 });
-// 0x9186ff77866DfD1007429F552e48C6d1A927297A
 $('#etcpeg-lock').click(function () {
     etcTab = 'lock';
     console.log("Click Triggered");
     
     $('#peg-table tbody').html("");
     let element_id = '#peg-table';
-    let api_url = "https://api.etherscan.io/api?module=account&action=txlist&address=0x2C7716BDf98e181df4CF1b40aD7648A40EE813b9&startblock=0&endblock=99999999&sort=asc&apikey=9439IK1Y6D6UZFBN298YATMAAAXD3XSIVS"
+    let api_url = "https://api.etherscan.io/api?module=account&action=txlist&address=0x9186ff77866DfD1007429F552e48C6d1A927297A&startblock=0&endblock=99999999&sort=asc&apikey=9439IK1Y6D6UZFBN298YATMAAAXD3XSIVS"
     
     etcPegLock(api_url, element_id)
 });
