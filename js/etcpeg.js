@@ -150,8 +150,7 @@ function etcPegRollup(api_url, element_id) {
         });
     
     
-/
-// etc peg token
+// etc peg lock
 function etcPegLock(api_url, element_id) {
     $.get(api_url,
         function (data) {
