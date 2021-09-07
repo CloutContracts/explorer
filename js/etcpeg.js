@@ -139,3 +139,4 @@ function etcPegRollup(api_url, element_id) {
                 $('#peg-table tbody').append(html);
             }
         });
+}
