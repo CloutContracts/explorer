@@ -206,9 +206,7 @@ function etcPegLock(api_url, element_id) {
                     html = '<tr><td colspan="5">No records found!</td></tr>'
                 }
 
-                $('#peg-table tbody').html(html);
-
+                $('#peg-table tbody').append(html);
             }
         });
-
 }
