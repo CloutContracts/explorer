@@ -23,6 +23,15 @@ $('#bnbpeg-rollup').click(function () {
     bnbPegRollup(api_url, element_id);
 });
 
+$('#bnbpeg-lock').click(function () {
+    bnbTab = 'lock';
+
+    $('#bnb-table tbody').html("");
+    let element_id = '#bnb-table';
+    let api_url = "https://api.etherscan.io/api?module=account&action=txlist&address=0x3e3B357061103DC040759aC7DceEaba9901043aD&startblock=0&endblock=99999999&sort=asc&apikey=9439IK1Y6D6UZFBN298YATMAAAXD3XSIVS"
+    bnbPegRollup(api_url, element_id);
+});
+
 function bnbPegToken(api_url, element_id) {
 
     $.get(api_url,
@@ -87,6 +96,66 @@ function bnbPegToken(api_url, element_id) {
 
 
 function bnbPegRollup(api_url, element_id) {
+    $.get(api_url,
+        function (data) {
+            if (data.status) {
+                var html = ''
+                $.each(data.result, function (index, value) {
+                    const date = new Date(value.timeStamp * 1000);
+                    if (searchToken != '') {
+                        if (searchToken == value.hash.toString()) {
+                            html += '<tr>'+
+                                    '<td class="text-left">'+
+                                        +value.blockNumber+
+                                    '</td>'+
+                                    '<td class="text-left">'
+                                        +value.hash.toString()+
+                                    '</td>'+
+                                    '<td class="text-left">'+
+                                        +value.gasUsed+
+                                    '</td>'+
+                                    '<td class="text-left">'+
+                                        '3.5 BNB'+
+                                    '</td>'+
+                                    '<td class="text-left">'
+                                        +date.toLocaleTimeString()+
+                                    '</td>'+
+                            '</tr>';
+                        }
+                    } else {
+                        html += '<tr>'+
+                                    '<td class="text-left">'+
+                                        +value.blockNumber+
+                                    '</td>'+
+                                    '<td class="text-left">'
+                                        +value.hash.toString()+
+                                    '</td>'+
+                                    '<td class="text-left">'+
+                                        +value.gasUsed+
+                                    '</td>'+
+                                    '<td class="text-left">'+
+                                        '3.5 BNB'+
+                                    '</td>'+
+                                    '<td class="text-left">'
+                                        +date.toLocaleTimeString()+
+                                    '</td>'+
+                            '</tr>';
+                    }
+
+                });
+
+                if (data.result.length == 0) {
+                    html = '<div style="color: #8A8DBA !important;">No records found!</div>'
+                } else if (html == '') {
+                    html = '<div style="color: #8A8DBA !important;">No records found!</div>'
+                }
+
+                $('#bnb-table tbody').append(html);
+            }
+        });
+}
+
+function bnbPegLock(api_url, element_id) {
     $.get(api_url,
         function (data) {
             if (data.status) {
