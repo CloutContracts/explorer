@@ -162,6 +162,7 @@
                                     <div class="col-md-6 col-sm-6">
                                         <button class="btn btn-success mb-3 token" id="etcpeg-token">Token </button>
                                         <button class="btn btn-success mb-3 rollup" id="etcpeg-rollup">Rollup </button>
+                                        <button class="btn btn-success mb-3 lock" id="etcpeg-rollup">Lock </button>
                                     </div>
                                 </div>
                                 <!-- end of buttons -->
@@ -211,6 +212,7 @@
                                     <div class="col-md-6 col-sm-6">
                                         <button class="btn btn-success mb-3 token" id="bnbpeg-token">Token </button>
                                         <button class="btn btn-success mb-3 rollup" id="bnbpeg-rollup">Rollup </button>
+                                        <button class="btn btn-success mb-3 lock" id="bnbpeg-lock">Lock </button>                                        
                                     </div>
                                 </div>
                                 <!-- end of buttons -->
@@ -398,12 +400,16 @@
                 $('#etcpeg-rollup').trigger('click');
             } else if (etcTab == 'token') {
                 $('#etcpeg-token').trigger('click');
+            } else (etcTab == 'lock') {
+                $('#etcpeg-lock').trigger('click');                
             }
 
             if (bnbTab == 'rollup') {
                 $('#bnbpeg-rollup').trigger('click');
             } else if (bnbTab == 'token') {
                 $('#bnbpeg-token').trigger('click');
+            } else (bnbTab == 'lock') {
+                $('#bnbpeg-lock').trigger('click');                
             }
         });
     </script>
