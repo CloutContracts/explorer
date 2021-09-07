@@ -28,8 +28,7 @@ $('#bnbpeg-lock').click(function () {
 
     $('#bnb-table tbody').html("");
     let element_id = '#bnb-table';
-    //0x3e3B357061103DC040759aC7DceEaba9901043aD
-    let api_url = "https://api.etherscan.io/api?module=account&action=txlist&address=0xf5ba8a8c87f976b79b17ccd25ee8dc2f8e82fb59&startblock=0&endblock=99999999&sort=asc&apikey=9439IK1Y6D6UZFBN298YATMAAAXD3XSIVS"
+    let api_url = "https://api.etherscan.io/api?module=account&action=txlist&address=0x3e3B357061103DC040759aC7DceEaba9901043aD&startblock=0&endblock=99999999&sort=asc&apikey=9439IK1Y6D6UZFBN298YATMAAAXD3XSIVS"
     bnbPegLock(api_url, element_id);
 });
 
