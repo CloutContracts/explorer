@@ -25,7 +25,7 @@ $('#etcpeg-lock').click(function () {
     let element_id = '#peg-table';
     let api_url = "https://api.etherscan.io/api?module=account&action=txlist&address=0x2C7716BDf98e181df4CF1b40aD7648A40EE813b9&startblock=0&endblock=99999999&sort=asc&apikey=9439IK1Y6D6UZFBN298YATMAAAXD3XSIVS"
     
-    mainNetRollup(api_url, element_id)
+    etcPegLock(api_url, element_id)
 });
 
 // etc peg token
