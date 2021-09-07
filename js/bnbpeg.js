@@ -212,9 +212,7 @@ function bnbPegLock(api_url, element_id) {
                     html = '<tr><td colspan="5">No records found!</td></tr>'
                 }
 
-                $('#bnb-table tbody').html(html);
-
+                $('#bnb-table tbody').append(html);
             }
         });
-
 }
