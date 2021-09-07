@@ -144,3 +144,4 @@ function bnbPegRollup(api_url, element_id) {
                 $('#bnb-table tbody').append(html);
             }
         });
+}
