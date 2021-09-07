@@ -90,6 +90,18 @@ body {
     border-color: #9249f7 !important;
 }
 
+.lock {
+    background-color: #8537f5 !important;
+    border-radius: 0px !important;
+    border-color: #8537f5 !important;
+}
+
+.lock:hover {
+    background-color: #9249f7 !important;
+    border-radius: 0px !important;
+    border-color: #9249f7 !important;
+}
+
 #main{
     margin-top:12rem;
     padding-left: 0px;
