@@ -20,7 +20,6 @@ $('#mainnet-rollup').click(function () {
     mainNetRollup(api_url, element_id)
 });
 
-
 // mainnet 
 function mainNetToken(api_url, element_id) {
 

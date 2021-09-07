@@ -117,7 +117,8 @@
                                 <div class="row mt-5">
                                     <div class="col-md-6 col-sm-6">
                                         <button class="btn btn-success mb-3 token" id="mainnet-token">Token </button>
-                                        <button class="btn btn-success mb-3 rollup" id="mainnet-rollup">Rollup </button>
+                                        <button class="btn btn-success mb-3 rollup" id="mainnet-rollup">Rollup </button>                                
+                                        
                                     </div>
                                 </div>
 
@@ -162,6 +163,7 @@
                                     <div class="col-md-6 col-sm-6">
                                         <button class="btn btn-success mb-3 token" id="etcpeg-token">Token </button>
                                         <button class="btn btn-success mb-3 rollup" id="etcpeg-rollup">Rollup </button>
+                                        <button class="btn btn-success mb-3 lock" id="etcpeg-lock">Lock </button>                                        
                                     </div>
                                 </div>
                                 <!-- end of buttons -->
@@ -211,6 +213,7 @@
                                     <div class="col-md-6 col-sm-6">
                                         <button class="btn btn-success mb-3 token" id="bnbpeg-token">Token </button>
                                         <button class="btn btn-success mb-3 rollup" id="bnbpeg-rollup">Rollup </button>
+                                        <button class="btn btn-success mb-3 lock" id="bnbpeg-lock">Lock </button>
                                     </div>
                                 </div>
                                 <!-- end of buttons -->
@@ -394,17 +397,26 @@
                 $('#testnet-token').trigger('click');
             }
 
-            if (etcTab == 'rollup') {
+            if (etcTab == 'lock') {
+                $('#etcpeg-lock').trigger('click');
+            }
+            
+            if    (etcTab == 'rollup') {
                 $('#etcpeg-rollup').trigger('click');
             } else if (etcTab == 'token') {
                 $('#etcpeg-token').trigger('click');
+            } 
+            
+            if (bnbTab == 'lock') {
+                $('#bnbpeg-lock').trigger('click');
             }
-
+                
             if (bnbTab == 'rollup') {
                 $('#bnbpeg-rollup').trigger('click');
             } else if (bnbTab == 'token') {
                 $('#bnbpeg-token').trigger('click');
-            }
+            
+            } 
         });
     </script>
 </body>
