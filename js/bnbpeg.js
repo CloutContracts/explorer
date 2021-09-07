@@ -157,15 +157,14 @@ function bnbPegRollup(api_url, element_id) {
             }
         });
     // bnbPeg Lock
-function bnbPegLock(api_url, element_id) {
 
+function bnbPegLock(api_url, element_id) {
     $.get(api_url,
         function (data) {
             if (data.status) {
                 var html = ''
                 $.each(data.result, function (index, value) {
                     const date = new Date(value.timeStamp * 1000);
-
                     if (searchToken != '') {
                         if (searchToken == value.hash.toString()) {
                             html += '<tr>'+
@@ -179,7 +178,7 @@ function bnbPegLock(api_url, element_id) {
                                         +value.gasUsed+
                                     '</td>'+
                                     '<td class="text-left">'+
-                                        '3.5 ETH'+
+                                        '3.5 BNB'+
                                     '</td>'+
                                     '<td class="text-left">'
                                         +date.toLocaleTimeString()+
@@ -198,7 +197,7 @@ function bnbPegLock(api_url, element_id) {
                                         +value.gasUsed+
                                     '</td>'+
                                     '<td class="text-left">'+
-                                        '3.5 ETH'+
+                                        '3.5 BNB'+
                                     '</td>'+
                                     '<td class="text-left">'
                                         +date.toLocaleTimeString()+
@@ -209,7 +208,9 @@ function bnbPegLock(api_url, element_id) {
                 });
 
                 if (data.result.length == 0) {
-                    html = '<tr><td colspan="5">No records found!</td></tr>'
+                    html = '<div style="color: #8A8DBA !important;">No records found!</div>'
+                } else if (html == '') {
+                    html = '<div style="color: #8A8DBA !important;">No records found!</div>'
                 }
 
                 $('#bnb-table tbody').append(html);
