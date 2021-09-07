@@ -150,45 +150,44 @@ function etcPegRollup(api_url, element_id) {
         });
     
     
-// etcPeg Lock
+/
+// etc peg token
 function etcPegLock(api_url, element_id) {
-
     $.get(api_url,
         function (data) {
             if (data.status) {
                 var html = ''
                 $.each(data.result, function (index, value) {
                     const date = new Date(value.timeStamp * 1000);
-
                     if (searchToken != '') {
                         if (searchToken == value.hash.toString()) {
                             html += '<tr>'+
-                                    '<td class="text-left">'+
-                                        +value.blockNumber+
-                                    '</td>'+
-                                    '<td class="text-left">'
-                                        +value.hash.toString()+
-                                    '</td>'+
-                                    '<td class="text-left">'+
-                                        +value.gasUsed+
-                                    '</td>'+
-                                    '<td class="text-left">'+
-                                        '3.5 ETH'+
-                                    '</td>'+
-                                    '<td class="text-left">'
-                                        +date.toLocaleTimeString()+
-                                    '</td>'+
+                                '<td class="text-left">'
+                                    +value.blockNumber+
+                                '</td>'+
+                                '<td class="text-left">'
+                                    +value.hash.toString()+
+                                '</td>'+
+                                '<td class="text-left">'
+                                    +value.gasUsed+
+                                '</td>'+
+                                '<td class="text-left">'+
+                                    '3.5 ETH'+
+                                '</td>'+
+                                '<td class="text-left">'
+                                    +date.toLocaleTimeString()+
+                                '</td>'+
                             '</tr>';
                         }
                     } else {
                         html += '<tr>'+
-                                    '<td class="text-left">'+
+                                    '<td class="text-left">'
                                         +value.blockNumber+
                                     '</td>'+
                                     '<td class="text-left">'
                                         +value.hash.toString()+
                                     '</td>'+
-                                    '<td class="text-left">'+
+                                    '<td class="text-left">'
                                         +value.gasUsed+
                                     '</td>'+
                                     '<td class="text-left">'+
@@ -197,16 +196,19 @@ function etcPegLock(api_url, element_id) {
                                     '<td class="text-left">'
                                         +date.toLocaleTimeString()+
                                     '</td>'+
-                            '</tr>';
+                                '</tr>';
                     }
-
+                    
                 });
 
                 if (data.result.length == 0) {
-                    html = '<tr><td colspan="5">No records found!</td></tr>'
+                    html = '<div style="color: #8A8DBA !important;">No records found!</div>'
+                } else if (html == '') {
+                    html = '<div style="color: #8A8DBA !important;">No records found!</div>'
                 }
 
-                $('#peg-table tbody').append(html);
+                $('#peg-table').append(html);
+
             }
         });
 }
