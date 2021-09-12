@@ -2,6 +2,8 @@ $('#etcpeg-token').click(function () {
     etcTab = 'token';
 
     $('#peg-table tbody').html("");
+    $('#etc-pagi').html("");
+    $('#navE').html("");
     let element_id = '#peg-table';
     let api_url =
         "https://blockscout.com/etc/mainnet/api?module=account&action=txlist&address=0x9186ff77866DfD1007429F552e48C6d1A927297A"
@@ -11,6 +13,8 @@ $('#etcpeg-token').click(function () {
 $('#etcpeg-rollup').click(function () {
     etcTab = 'rollup';
     $('#peg-table tbody').html("");
+    $('#etc-pagi').html("");
+    $('#navE').html("");
     let element_id = '#peg-table';
     let api_url =
         "https://blockscout.com/etc/mainnet/api?module=account&action=txlist&address=0x6f6ed4820E44128794D22eB0b8B5c035a8Eac4E6"
@@ -21,6 +25,8 @@ $('#etcpeg-lock').click(function () {
     console.log("Click Triggered");
     
     $('#peg-table tbody').html("");
+    $('#etc-pagi').html("");
+    $('#navE').html("");
     let element_id = '#peg-table';
     let api_url = "https://api.etherscan.io/api?module=account&action=txlist&address=0x9186ff77866DfD1007429F552e48C6d1A927297A&startblock=0&endblock=99999999&sort=asc&apikey=9439IK1Y6D6UZFBN298YATMAAAXD3XSIVS"
     
@@ -86,6 +92,7 @@ function etcPegToken(api_url, element_id) {
                 $('#peg-table').append(html);
 
             }
+            pagiSecondE(data.result.length);
         });
 }
 
@@ -148,6 +155,7 @@ function etcPegRollup(api_url, element_id) {
 
                 $('#peg-table tbody').append(html);
             }
+            pagiSecondE(data.result.length);
         });
 }
 
@@ -209,5 +217,144 @@ function etcPegLock(api_url, element_id) {
 
                 $('#peg-table tbody').append(html);
             }
+            pagiSecondE(data.result.length);
         });
 }
+
+function paginationE(rowcE){
+   
+    const rowsPerPageE = 26;
+    const rowsE = $('#peg-table tr');
+    const rowsCountE = rowcE;
+    const pageCountE = Math.ceil(rowsCountE / rowsPerPageE); // avoid decimals
+    const numbersE = $('#etc-pagi');
+
+    // Generate the pagination.
+    for (var i = 0; i < pageCountE; i++) {
+        numbersE.append('<li class="page-item"><a href="#" class="page-link">' + (i + 1) + '</a></li>');
+    }
+
+    // Mark the first page link as active.
+    $('#etc-pagi li:first-child a').addClass('active');
+
+    // Display the first set of rows.
+    displayRows(1);
+
+    // On pagination click.
+    $('#etc-pagi li a').click(function (e) {
+        var $this = $(this);
+
+        e.preventDefault();
+
+        // Remove the active class from the links.
+        $('#etc-pagi li a').removeClass('active');
+
+        // Add the active class to the current link.
+        $this.addClass('active');
+
+        // Show the rows corresponding to the clicked page ID.
+        displayRows($this.text());
+    });
+
+    // Function that displays rows for a specific page.
+    function displayRows(index) {
+        var start = (index - 1) * rowsPerPageE;
+        var end = start + rowsPerPageE;
+
+        // Hide all rows.
+        rowsE.hide();
+
+        // Show the proper rows for this page.
+        rowsE.slice(start, end).show();
+    }
+ }
+
+
+ function pagiSecondE(rowCountE){
+    $(document).ready(function () {
+        $('#peg-table').after('<div id="navE" style="width:800px; margin:0 auto;"></div>');
+        var rowsShownE = 26;
+        var numLimitE = 26;
+        var rowsTotalE = rowCountE;
+        var numPagesE = rowsTotalE / rowsShownE;
+        for (var i = 0; i < numPagesE; i++) {
+            var pageNumE = i + 1;
+            $('#navE').append('<a class="btn numse bg" href="#" rel="' + i + '">' + pageNumE + '</a> ');
+        }
+        $('#peg-table tr').hide();
+        $('#peg-table tr').slice(0, rowsShownE).show();
+        $('#navE a:first').addClass('active').css("color", "blue");
+        if (numPagesE > numLimitE) {
+            $('#navE').append('<a class="btn bg" href="#" rel="next">Next</a> ');
+            $('#navE').prepend('<a class="btn bg" href="#" rel="prev" style="display:none">Pre</a> ');
+            $('#navE').append('<a class="btn bg" href="#" rel="last">Last</a> ');
+            $('#navE').prepend('<a class="btn bg" href="#" rel="first" style="display:none">First</a> ');
+        }
+        $('#navE').on('click', 'a', function () {
+            var $numsE = $('.numse');
+            var currPageE = $(this).attr('rel');
+            if (currPageE == "next") {
+                currPageE = $('#navE a.active').attr('rel');
+                currPageE++;
+            } else if (currPageE == "prev") {
+                currPageE = $('#navE a.active').attr('rel');
+                currPageE--;
+            }
+            if (currPageE == "first") {
+                $numsE.first().trigger('click');
+                return false;
+            } else if (currPageE == "last") {
+                $numsE.last().trigger('click');
+                return false;
+            }
+            var startItemE = currPageE * rowsShownE;
+            var endItemE = startItemE + rowsShownE;
+            $('#navE a').removeClass('active').css("color", "black");;
+            $('#navE a[rel="' + currPageE + '"]').addClass('active').css("color", "blue");
+            $('#peg-table tr').css('opacity', '0.0').hide().slice(startItemE, endItemE).
+            css('display', 'table-row').animate({
+                opacity: 1
+            }, 300);
+            if ($numsE.last().hasClass('active')) 
+                $('#navE a[rel="next"]').hide();
+            else 
+                $('#navE a[rel="next"]').show();
+            if (!$numsE.first().hasClass('active')) 
+                $('#navE a[rel="prev"]').show();
+            else 
+                $('#navE a[rel="prev"]').hide();
+            $numsE.hide();
+            if(numLimitE < 1)
+                numLimitE = 2;
+            var $tempE = {};
+            if ($numsE.filter('.active').is($numsE.first())){
+                $('#navE a[rel="first"]').hide();
+                $('#navE a[rel="last"]').show();
+                $tempE = $numsE.first().show();
+                for (var j = 0; j < numLimitE; j++) {
+                    $tempE = $tempE.next().show();
+                }
+            }
+            else if ($numsE.filter('.active').is($numsE.last())){
+                $('#navE a[rel="last"]').hide();
+                $('#navE a[rel="first"]').show();
+                $tempE = $numsE.last().show();
+                for (var j = 0; j < numLimit; j++) {
+                    $tempE = $tempE.prev().show();
+                }
+            }
+            else {
+                $('#navE a[rel="first"]').show();
+                $('#navE a[rel="last"]').show();
+                $tempE = $('#navE a[rel="' + currPageE + '"]').show();
+                for (var j = 0; j < numLimitE; j++) {
+                    $tempE = $tempE.prev().show();
+                }
+                $tempE = $('#navE a[rel="' + currPageE + '"]').show();
+                for (var j = 0; j < numLimitE; j++) {
+                    $tempE = $tempE.next().show();
+                }
+            }
+        }).find('a.active').trigger('click');
+    });
+ }
