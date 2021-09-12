@@ -21,8 +21,7 @@ $('#mainnet-rollup').click(function () {
     $('#navm').html("");
     
     let element_id = '#main-table';
-    // 0x2C7716BDf98e181df4CF1b40aD7648A40EE813b9
-    let api_url = "https://api.etherscan.io/api?module=account&action=txlist&address=0xb6ed7644c69416d67b522e20bc294a9a9b405b31&startblock=0&endblock=99999999&sort=asc&apikey=9439IK1Y6D6UZFBN298YATMAAAXD3XSIVS"
+    let api_url = "https://api.etherscan.io/api?module=account&action=txlist&address=0x2C7716BDf98e181df4CF1b40aD7648A40EE813b9&startblock=0&endblock=99999999&sort=asc&apikey=9439IK1Y6D6UZFBN298YATMAAAXD3XSIVS"
     
     mainNetRollup(api_url, element_id)
 });
