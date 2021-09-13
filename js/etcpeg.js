@@ -28,7 +28,7 @@ $('#etcpeg-lock').click(function () {
     $('#etc-pagi').html("");
     $('#navE').html("");
     let element_id = '#peg-table';
-    let api_url = "https://api.etherscan.io/api?module=account&action=txlist&address=0x9186ff77866DfD1007429F552e48C6d1A927297A&startblock=0&endblock=99999999&sort=asc&apikey=9439IK1Y6D6UZFBN298YATMAAAXD3XSIVS"
+    let api_url = "https://api.etherscan.io/api?module=account&action=tokentx&address=0x9186ff77866DfD1007429F552e48C6d1A927297A&startblock=0&endblock=999999999&sort=asc&apikey=9439IK1Y6D6UZFBN298YATMAAAXD3XSIVS"
     
     etcPegLock(api_url, element_id)
 });
