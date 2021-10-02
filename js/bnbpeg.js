@@ -34,7 +34,7 @@ $('#bnbpeg-lock').click(function () {
     $('#bnb-pagi').html("");
     $('#navb').html("");
     let element_id = '#bnb-table';
-    let api_url = "https://api.etherscan.io/api?module=account&action=tokentx&address=0x3e3B357061103DC040759aC7DceEaba9901043aD&startblock=0&endblock=999999999&sort=asc&apikey=9439IK1Y6D6UZFBN298YATMAAAXD3XSIVS"
+    let api_url = "https://api.etherscan.io/api?module=account&action=txlist&address=0x3e3B357061103DC040759aC7DceEaba9901043aD&startblock=0&endblock=99999999&sort=asc&apikey=9439IK1Y6D6UZFBN298YATMAAAXD3XSIVS"
     bnbPegLock(api_url, element_id);
 });
 
@@ -342,7 +342,7 @@ function paginationB(rowcB){
                 $('#navb a[rel="last"]').hide();
                 $('#navb a[rel="first"]').show();
                 $tempB = $numsB.last().show();
-                for (var j = 0; j < numLimit; j++) {
+                for (var j = 0; j < numLimitB; j++) {
                     $tempB = $tempB.prev().show();
                 }
             }
