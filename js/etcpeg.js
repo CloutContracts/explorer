@@ -35,12 +35,14 @@ $('#etcpeg-lock').click(function () {
 
 // etc peg token
 function etcPegToken(api_url, element_id) {
+    
     $.get(api_url,
         function (data) {
             if (data.status) {
                 var html = ''
                 $.each(data.result, function (index, value) {
                     const date = new Date(value.timeStamp * 1000);
+                    
                     if (searchToken != '') {
                         if (searchToken == value.hash.toString()) {
                             html += '<tr>'+
@@ -53,8 +55,8 @@ function etcPegToken(api_url, element_id) {
                                 '<td class="text-left">'
                                     +value.gasUsed+
                                 '</td>'+
-                                '<td class="text-left">'+
-                                    '3.5 ETH'+
+                                '<td class="text-left">'
+                                +value.transactionIndex+
                                 '</td>'+
                                 '<td class="text-left">'
                                     +date.toLocaleTimeString()+
@@ -72,8 +74,8 @@ function etcPegToken(api_url, element_id) {
                                     '<td class="text-left">'
                                         +value.gasUsed+
                                     '</td>'+
-                                    '<td class="text-left">'+
-                                        '3.5 ETH'+
+                                    '<td class="text-left">'
+                                    +value.transactionIndex+
                                     '</td>'+
                                     '<td class="text-left">'
                                         +date.toLocaleTimeString()+
@@ -105,6 +107,7 @@ function etcPegRollup(api_url, element_id) {
                 var html = ''
                 $.each(data.result, function (index, value) {
                     const date = new Date(value.timeStamp * 1000);
+                    
                     if (searchToken != '') {
                         if (searchToken == value.hash.toString()) {
                             html += '<tr>'+
@@ -117,8 +120,8 @@ function etcPegRollup(api_url, element_id) {
                                     '<td class="text-left">'+
                                         +value.gasUsed+
                                     '</td>'+
-                                    '<td class="text-left">'+
-                                        '3.5 ETC'+
+                                    '<td class="text-left">'
+                                    +value.transactionIndex+
                                     '</td>'+
                                     '<td class="text-left">'
                                         +date.toLocaleTimeString()+
@@ -136,8 +139,8 @@ function etcPegRollup(api_url, element_id) {
                                     '<td class="text-left">'+
                                         +value.gasUsed+
                                     '</td>'+
-                                    '<td class="text-left">'+
-                                        '3.5 ETC'+
+                                    '<td class="text-left">'
+                                    +value.transactionIndex+
                                     '</td>'+
                                     '<td class="text-left">'
                                         +date.toLocaleTimeString()+
@@ -167,6 +170,7 @@ function etcPegLock(api_url, element_id) {
                 var html = ''
                 $.each(data.result, function (index, value) {
                     const date = new Date(value.timeStamp * 1000);
+                    
                     if (searchToken != '') {
                         if (searchToken == value.hash.toString()) {
                             html += '<tr>'+
@@ -179,8 +183,8 @@ function etcPegLock(api_url, element_id) {
                                     '<td class="text-left">'+
                                         +value.gasUsed+
                                     '</td>'+
-                                    '<td class="text-left">'+
-                                        '3.5 ETC'+
+                                    '<td class="text-left">'
+                                    +value.transactionIndex+
                                     '</td>'+
                                     '<td class="text-left">'
                                         +date.toLocaleTimeString()+
@@ -198,8 +202,8 @@ function etcPegLock(api_url, element_id) {
                                     '<td class="text-left">'+
                                         +value.gasUsed+
                                     '</td>'+
-                                    '<td class="text-left">'+
-                                        '3.5 ETC'+
+                                    '<td class="text-left">'
+                                    +value.transactionIndex+
                                     '</td>'+
                                     '<td class="text-left">'
                                         +date.toLocaleTimeString()+
@@ -220,6 +224,7 @@ function etcPegLock(api_url, element_id) {
             pagiSecondE(data.result.length);
         });
 }
+
 
 function paginationE(rowcE){
    
