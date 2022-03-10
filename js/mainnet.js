@@ -28,19 +28,19 @@ $('#mainnet-rollup').click(function () {
 
 // mainnet 
 function mainNetToken(api_url, element_id) {
-
-    console.log('Search Term', searchToken);
-
+    
     $.get(api_url,
         function (data) {
             if (data.status) {
 
                 var html = ''
-
+                
                 $.each(data.result, function (index, value) {
                     const date = new Date(value.timeStamp * 1000);
+    
                     if (searchToken != '') {
                         if (searchToken == value.hash.toString()) {
+                            
                             html += '<tr>'+
                                 '<td class="text-left">'
                                     +value.blockNumber+
@@ -51,8 +51,8 @@ function mainNetToken(api_url, element_id) {
                                 '<td class="text-left">'
                                     +value.gasUsed+
                                 '</td>'+
-                                '<td class="text-left">'+
-                                    '3.5 ETH'+
+                                '<td class="text-left" id="' + value.blockNumber + '">'
+                                    +value.transactionIndex+
                                 '</td>'+
                                 '<td class="text-left">'
                                     +date.toLocaleTimeString()+
@@ -70,10 +70,10 @@ function mainNetToken(api_url, element_id) {
                                     '<td class="text-left">'
                                         +value.gasUsed+
                                     '</td>'+
-                                    '<td class="text-left">'+
-                                        '3.5 ETH'+
+                                    '<td class="text-left" id="' + value.blockNumber + '">'
+                                    +value.transactionIndex+
                                     '</td>'+
-                                    '<td class="text-left">'
+                                    '<td class="text-left block-reward">'
                                         +date.toLocaleTimeString()+
                                     '</td>'+
                                 '</tr>';
@@ -93,16 +93,17 @@ function mainNetToken(api_url, element_id) {
         });
 }
 
+
 // roll ups // mainnet 
 function mainNetRollup(api_url, element_id) {
-
+    
     $.get(api_url,
         function (data) {
             if (data.status) {
                 var html = ''
                 $.each(data.result, function (index, value) {
                     const date = new Date(value.timeStamp * 1000);
-
+                    
                     if (searchToken != '') {
                         if (searchToken == value.hash.toString()) {
                             html += '<tr>'+
@@ -115,8 +116,8 @@ function mainNetRollup(api_url, element_id) {
                                     '<td class="text-left">'+
                                         +value.gasUsed+
                                     '</td>'+
-                                    '<td class="text-left">'+
-                                        '3.5 ETH'+
+                                    '<td class="text-left">'
+                                    +value.transactionIndex+
                                     '</td>'+
                                     '<td class="text-left">'
                                         +date.toLocaleTimeString()+
@@ -134,8 +135,8 @@ function mainNetRollup(api_url, element_id) {
                                     '<td class="text-left">'+
                                         +value.gasUsed+
                                     '</td>'+
-                                    '<td class="text-left">'+
-                                        '3.5 ETH'+
+                                    '<td class="text-left">'
+                                    +value.transactionIndex+
                                     '</td>'+
                                     '<td class="text-left">'
                                         +date.toLocaleTimeString()+
@@ -153,9 +154,8 @@ function mainNetRollup(api_url, element_id) {
 
             }
             pagiSecondM(data.result.length)
-        });
+    });
 }
-
 
 function paginationM(mainrow){
 

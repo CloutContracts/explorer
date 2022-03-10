@@ -39,13 +39,15 @@ $('#bnbpeg-lock').click(function () {
 });
 
 function bnbPegToken(api_url, element_id) {
-
+    
     $.get(api_url,
         function (data) {
             if (data.status) {
                 var html = ''
+                
                 $.each(data.result, function (index, value) {
                     const date = new Date(value.timeStamp * 1000);
+                    
                     if (searchToken != '') {
                         if (searchToken == value.hash.toString()) {
                             html += '<tr>'+
@@ -58,8 +60,8 @@ function bnbPegToken(api_url, element_id) {
                                 '<td class="text-left">'
                                     +value.gasUsed+
                                 '</td>'+
-                                '<td class="text-left">'+
-                                    '3.5 ETH'+
+                                '<td class="text-left">'
+                                +value.transactionIndex+
                                 '</td>'+
                                 '<td class="text-left">'
                                     +date.toLocaleTimeString()+
@@ -77,8 +79,8 @@ function bnbPegToken(api_url, element_id) {
                                     '<td class="text-left">'
                                         +value.gasUsed+
                                     '</td>'+
-                                    '<td class="text-left">'+
-                                        '3.5 ETH'+
+                                    '<td class="text-left">'
+                                    +value.transactionIndex+
                                     '</td>'+
                                     '<td class="text-left">'
                                         +date.toLocaleTimeString()+
@@ -103,12 +105,14 @@ function bnbPegToken(api_url, element_id) {
 
 
 function bnbPegRollup(api_url, element_id) {
+    
     $.get(api_url,
         function (data) {
             if (data.status) {
                 var html = ''
                 $.each(data.result, function (index, value) {
                     const date = new Date(value.timeStamp * 1000);
+                    
                     if (searchToken != '') {
                         if (searchToken == value.hash.toString()) {
                             html += '<tr>'+
@@ -121,8 +125,8 @@ function bnbPegRollup(api_url, element_id) {
                                     '<td class="text-left">'+
                                         +value.gasUsed+
                                     '</td>'+
-                                    '<td class="text-left">'+
-                                        '3.5 BNB'+
+                                    '<td class="text-left">'
+                                    +value.transactionIndex+
                                     '</td>'+
                                     '<td class="text-left">'
                                         +date.toLocaleTimeString()+
@@ -140,8 +144,8 @@ function bnbPegRollup(api_url, element_id) {
                                     '<td class="text-left">'+
                                         +value.gasUsed+
                                     '</td>'+
-                                    '<td class="text-left">'+
-                                        '3.5 BNB'+
+                                    '<td class="text-left">'
+                                    +value.transactionIndex+
                                     '</td>'+
                                     '<td class="text-left">'
                                         +date.toLocaleTimeString()+
@@ -164,12 +168,14 @@ function bnbPegRollup(api_url, element_id) {
 }
 
 function bnbPegLock(api_url, element_id) {
+    
     $.get(api_url,
         function (data) {
             if (data.status) {
                 var html = ''
                 $.each(data.result, function (index, value) {
                     const date = new Date(value.timeStamp * 1000);
+                    
                     if (searchToken != '') {
                         if (searchToken == value.hash.toString()) {
                             html += '<tr>'+
@@ -182,8 +188,8 @@ function bnbPegLock(api_url, element_id) {
                                     '<td class="text-left">'+
                                         +value.gasUsed+
                                     '</td>'+
-                                    '<td class="text-left">'+
-                                        '3.5 BNB'+
+                                    '<td class="text-left">'
+                                    +value.transactionIndex+
                                     '</td>'+
                                     '<td class="text-left">'
                                         +date.toLocaleTimeString()+
@@ -201,8 +207,8 @@ function bnbPegLock(api_url, element_id) {
                                     '<td class="text-left">'+
                                         +value.gasUsed+
                                     '</td>'+
-                                    '<td class="text-left">'+
-                                        '3.5 BNB'+
+                                    '<td class="text-left">'
+                                    +value.transactionIndex+
                                     '</td>'+
                                     '<td class="text-left">'
                                         +date.toLocaleTimeString()+
@@ -223,6 +229,7 @@ function bnbPegLock(api_url, element_id) {
             pagiSecondB(data.result.length);
         });
 }
+
 
 function paginationB(rowcB){
    
@@ -361,3 +368,4 @@ function paginationB(rowcB){
         }).find('a.active').trigger('click');
     });
  }
+
