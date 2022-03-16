@@ -23,7 +23,7 @@
      $('#nav').html("");
 
      let element_id = '#test-token'
-     let api_url = "https://api-ropsten.etherscan.io/api?module=account&action=txlistinternal&address=0xFa32465ddFC3628F8723fe7941F035a494bfbFf2&startblock=0&endblock=999999999&sort=asc&apikey=9439IK1Y6D6UZFBN298YATMAAAXD3XSIVS"
+     let api_url = "https://api-ropsten.etherscan.io/api?module=account&action=txlist&address=0xFa32465ddFC3628F8723fe7941F035a494bfbFf2&startblock=0&endblock=999999999&sort=asc&apikey=9439IK1Y6D6UZFBN298YATMAAAXD3XSIVS"
 
      rollup(api_url, element_id);
  });
@@ -38,7 +38,7 @@
                 var html = ''
                 $.each(data.result, function (index, value) {
                     const date = new Date(value.timeStamp * 1000);
-
+            
                 if (searchToken != '') {
                     if (searchToken == value.hash.toString()) {
                         html += '<tr>'+
@@ -51,8 +51,8 @@
                                 '<td class="text-left">'+
                                     +value.gasUsed+
                                 '</td>'+
-                                '<td class="text-left">'+
-                                    '3.5 ETH'+
+                                '<td class="text-left">'
+                                +value.transactionIndex+
                                 '</td>'+
                                 '<td class="text-left">'
                                     +date.toLocaleTimeString()+
@@ -70,8 +70,8 @@
                                 '<td class="text-left">'+
                                     +value.gasUsed+
                                 '</td>'+
-                                '<td class="text-left">'+
-                                    '3.5 ETH'+
+                                '<td class="text-left">'
+                                +value.transactionIndex+
                                 '</td>'+
                                 '<td class="text-left">'
                                     +date.toLocaleTimeString()+
@@ -95,7 +95,7 @@
 
  // roll ups // testnet & mainnet 
  function rollup(api_url, element_id) {
-
+    
      $.get(api_url,
         function (data) {
             if (data.status) {
@@ -103,7 +103,7 @@
                 $.each(data.result, function (index, value) {
                     
                 const date = new Date(value.timeStamp * 1000);
-        
+                
                 if (searchToken != '') {
                     if (searchToken == value.hash.toString()) {
                         html += '<tr class="tr">'+
@@ -116,8 +116,8 @@
                                 '<td class="text-left">'+
                                     +value.gasUsed+
                                 '</td>'+
-                                '<td class="text-left">'+
-                                    '3.5 ETH'+
+                                '<td class="text-left">'
+                                +value.transactionIndex+
                                 '</td>'+
                                 '<td class="text-left">'
                                     +date.toLocaleTimeString()+
@@ -135,8 +135,8 @@
                                 '<td class="text-left">'+
                                     +value.gasUsed+
                                 '</td>'+
-                                '<td class="text-left">'+
-                                    '3.5 ETH'+
+                                '<td class="text-left">'
+                                +value.transactionIndex+
                                 '</td>'+
                                 '<td class="text-left">'
                                     +date.toLocaleTimeString()+
@@ -156,7 +156,6 @@
             pagiSecond(data.result.length)
         });
     }
-
 
  function pagination(rowc){
    

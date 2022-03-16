@@ -18,11 +18,12 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-light navbar-expand-lg fixed-top justify-content-center" id="navbar-custom">
+        <!-- <nav class="navbar navbar-light navbar-expand-lg fixed-top justify-content-center" id="navbar-custom">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,7 +32,7 @@
                 <h2 class="explore">Explorer</h2>
             </a>
             
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item dropdown">
                         <a href="https://cloutcontracts.net/" target="_blank" class="nav-link">Home</a>
@@ -60,9 +61,51 @@
                 <img src="moon.png" id="sun">
               </div>
             
+        </nav> -->
+        
+        <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="navbar-custom">
+            <div class="container-fluid">
+                <a href="https://cloutcontracts.net" target="_blank" class="navbar-brand d-flex w-75 mr-auto">
+                    <img src="https://cloutcontracts.net/assets/images/c-512x512.png" style="width:50px;height:50px"> 
+                    <h2 class="explore">Explorer</h2>
+                </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-end">
+                  <li class="nav-item">
+                    <a href="https://cloutcontracts.net/" target="_blank" class="nav-link">Home</a>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Networks
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="#testnet" id="testnetBtn" class="dropdown-item">Test Net</a>
+                        <a href="#mainnet" id="mainBtn" class="dropdown-item">Main Net</a>
+                        <a href="#theetcpeg" id="pegBtn" class="dropdown-item">The ETC Peg</a>
+                        <a href="#thebnbpeg" id="bnbBtn" class="dropdown-item">The BNB Peg</a>
+                    </ul>
+                  </li>
+                  
+                  <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Follow Us</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="https://www.minds.com/CloutContracts" target="_blank" class="dropdown-item">Minds</a>
+                        <a href="https://steemit.com/@cloutcontracts" target="_blank" class="dropdown-item">SteemIt</a>
+                        <a href="https://bitclout.com/u/CloutContracts" target="_blank" class="dropdown-item">BitClout</a>
+                        <a href="https://peepeth.com/CloutContracts" target="_blank" class="dropdown-item">Peepeth</a>
+                    </ul>
+                </li>
+                </ul>
+                <img src="moon.png" id="sun">
+              </div>
+            </div>
         </nav>
     </header>
-
+    
     <main role="main">
         <section id="main">
             <div class="container mt-1">
@@ -445,6 +488,20 @@
     <script src="js/etcpeg.js"></script>
     <script src="js/paginationLogic.js"></script>
     
+    <script>
+        document.querySelectorAll('.dropdown-toggle').forEach(item => {
+          item.addEventListener('click', event => {
+         
+            if(event.target.classList.contains('dropdown-toggle') ){
+              event.target.classList.toggle('toggle-change');
+            }
+            else if(event.target.parentElement.classList.contains('dropdown-toggle')){
+              event.target.parentElement.classList.toggle('toggle-change');
+            }
+          })
+        });
+
+    </script>
     
     <script>
         var tokens = [];
