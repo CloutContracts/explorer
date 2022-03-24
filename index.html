@@ -629,7 +629,7 @@
                     $('#totalsupply').text(parseFloat(response[0].total_supply).toLocaleString());
                     $('#marketcap').text('$'+parseFloat(response[0].market_cap).toLocaleString());
                     $('#vol').text('$'+parseFloat(response[0].total_volume).toLocaleString());
-                    $('#pricechange').text('$'+response[0].price_change_percentage_24h);
+                    $('#pricechange').text(response[0].price_change_percentage_24h);
 
                     if (parseFloat(response[0].price_change_percentage_24h) > 0) {
                         $('#pricechange').css('color', 'green');
