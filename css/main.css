@@ -331,6 +331,23 @@ tr{
     }
   }
   
+
+  @media only screen and (min-width: 876px) {
+    .col-md-6 {
+        width: 100% !important;
+    }
+    
+    .custom-button{
+        margin-top: 10px;
+        width: 100%;
+    }
+    
+    #test-token, #main-table, #peg-table, #bnb-table{
+        font-size: 11.2px;
+    }
+  }
+  
+  
   
   
   
