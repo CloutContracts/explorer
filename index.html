@@ -622,7 +622,7 @@
         });
 
         function getSupply() {
-            $.get("https://supplyapi.herokuapp.com/GetCirculatingSupply",
+            $.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=cloutcontracts",
                 function (response) {
                     console.log(response[0].circulating_supply);
                     $('#supply').text(parseFloat(response[0].circulating_supply).toLocaleString());
