@@ -653,8 +653,12 @@
 
         // new supply
         function getNewSupply(){
-            $.get("https://supplyapi.herokuapp.com/GetCirculatingSupply", function(response){
-                
+
+            const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+            const apiUrl = 'https://supplyapi.herokuapp.com/GetCirculatingSupply';
+
+            $.get(proxyUrl + apiUrl, function(response){
+                console.log(response)
                 let supplyCap =  parseFloat(response).toLocaleString();
                 let priceMarket     =  priceMain;
                 console.log("priceMarket" +  "-" + priceMarket);
@@ -668,7 +672,6 @@
 
             })
         }
-
         // search button
         $('.custom-button').click(function () {
             var hashNumber = $('.custom-search').val();
