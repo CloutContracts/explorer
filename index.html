@@ -654,10 +654,10 @@
         // new supply
         function getNewSupply(){
 
-            const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+            // const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
             const apiUrl = 'https://supplyapi.herokuapp.com/GetCirculatingSupply';
 
-            $.get(proxyUrl + apiUrl, function(response){
+            $.get(apiUrl, function(response){
                 console.log(response)
                 let supplyCap =  parseFloat(response).toLocaleString();
                 let priceMarket     =  priceMain;
