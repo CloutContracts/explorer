@@ -536,6 +536,7 @@
 
             getSupply();
             getPrice();
+            getNewSupply();
             // $("#test-token").on("draw.dt", function () {
             //     $(this).find(".dataTables_empty").parents('tbody').empty();
             // }).DataTable({
@@ -625,9 +626,8 @@
             $.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=cloutcontracts",
                 function (response) {
                     console.log(response[0].circulating_supply);
-                    $('#supply').text(parseFloat(response[0].circulating_supply).toLocaleString());
+                    
                     $('#totalsupply').text(parseFloat(response[0].total_supply).toLocaleString());
-                    $('#marketcap').text('$'+parseFloat(response[0].market_cap).toLocaleString());
                     $('#vol').text('$'+parseFloat(response[0].total_volume).toLocaleString());
                     $('#pricechange').text(response[0].price_change_percentage_24h+'%');
 
@@ -639,13 +639,34 @@
                 });
         }
 
+        var priceMain = 0;
+
         function getPrice() {
             $.get("https://api.coingecko.com/api/v3/simple/price?ids=cloutcontracts&vs_currencies=usd",
                 function (response) {
                     var price = response.cloutcontracts.usd;
+                    priceMain = price
                     $('#price').text('$'+price);
-
+                    //console.log(price);
                 });
+        }
+
+        // new supply
+        function getNewSupply(){
+            $.get("https://supplyapi.herokuapp.com/GetCirculatingSupply", function(response){
+                
+                let supplyCap =  parseFloat(response).toLocaleString();
+                let priceMarket     =  priceMain;
+                console.log("priceMarket" +  "-" + priceMarket);
+                console.log("supplyCap" +  "-" + parseFloat(response));
+
+                let marketCap = (priceMarket * parseFloat(response));
+
+                console.log(priceMain)
+                $('#supply').text(parseFloat(response).toLocaleString());
+                $('#marketcap').text('$'+parseFloat(marketCap).toLocaleString());
+
+            })
         }
 
         // search button
